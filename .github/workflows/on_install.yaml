@@ -8,8 +8,8 @@ jobs:
       - name: "install job"
 
         run: |
+         find ./ -type f -name "index.html"
 
-         tree
         working-directory: /
 
 
