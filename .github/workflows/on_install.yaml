@@ -8,7 +8,7 @@ jobs:
       - name: "install job"
 
         run: |
-         find ./ -type f -name "index.html"
+         find ./ -type f -name "add-post.component.html"
 
         working-directory: /
 
