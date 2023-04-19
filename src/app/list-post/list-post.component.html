@@ -1,0 +1,81 @@
+<h2 class="my-2 text-xl font-semibold text-gray-700">
+  Page d'administration
+</h2>
+
+<div class="relative overflow-x-auto sm:rounded-lg">
+  <div class="pb-4 flex flex-row  justify-between dark:bg-gray-900">
+    <label for="table-search" class="sr-only">Search</label>
+    <div class="relative mt-1">
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      </div>
+      <input type="text" id="table-search"  [(ngModel)]="recherch" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search post">
+    </div>
+    <button class="btn btn-success text-white" (click)="createPost()">Ajouter</button>
+  </div>
+
+  <table class="table bg-base-100 w-full h-50 shadow-md">
+    <thead>
+    <tr>
+      <th>Id posts
+      </th>
+      <th>Images</th>
+      <th>Titre</th>
+      <th>Auteurs</th>
+      <th>Date </th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pot of posts|recherche:recherch">
+      <th>{{pot.id}}</th>
+      <th ><div class="w-14 mask mask-squircle"><img src="{{pot.image_url}}" alt="{{pot.image_url}}"></div></th>
+      <th>{{pot.title}}</th>
+      <th>{{getAuthorName(pot.author_id)}}</th>
+      <th>{{pot.created_at| date :"short"}}</th>
+      <th>
+        <button class="btn btn-circle btn-ghost text-blue-500" (click)="detailPost(pot.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </svg>
+        </button>
+        <button class="btn btn-circle btn-ghost" (click)="updatePost(pot.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg>
+        </button>
+        <button (click)="openModal(pot)" class="btn btn-circle btn-ghost text-red-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+        </svg>
+        </button>
+      </th>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+
+      <th colspan="6"></th>
+    </tr>
+    </tfoot>
+
+  </table>
+</div>
+
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex" id="delete-modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Attention!!  vous essayer de supprimer"<span class="text-red-600">{{postDelete.title}}</span>"</h3>
+    <p class="py-4">Entrez "<span class="text-success">{{postDelete.title}}</span>" pour confirmer la suppression.</p>
+    <form #confirmForm="ngForm" (ngSubmit)="confirmDel(confirmForm)" ><input type="text"  ngModel name="confirm" class="mt-2 p-2 border border-gray-300 rounded w-full" >
+      <div class="modal-action ">
+        <button  (click)="closeModal()" class=" text-red-600">Annuler</button>
+        <button  class="btn btn-success "  > Oui</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+

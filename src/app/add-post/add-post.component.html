@@ -1,0 +1,49 @@
+<div *ngIf="errorMessage" class="text-red-500 text-xl">
+  une Erreur c'est produite !!!!!!!
+  {{errors}}
+</div>
+
+<form class=" flex flex-col  items-center justify-center  p-4 sm:px-4 lg:px-6 w-full " #addPostForm="ngForm" (ngSubmit)="addPost(addPostForm)" >
+  <h2 class=" text-xl font-semibold text-gray-700">
+    Creation d'un post
+  </h2>
+  <div class="content-end   grid grid-cols-1 gap-2 m-2 p-2 w-full ">
+    <div class="mb-1 form-control">
+      <label for="postTitle" class="label"><span class="label-text">Title</span></label>
+      <input type="text" class="input input-bordered w-full max-w-xl" id="postTitle" ngModel name ="title" placeholder="Titre du post"/>
+    </div>
+    <div class="mb-1 form-control">
+      <label for="postAuthor" class="label"> <span class="label-text">Auteur</span></label>
+      <select  class=" select select-bordered w-full max-w-xl" id="postAuthor"   ngModel name ="author">
+
+        <option *ngFor="let a of authors" [value]="a.id">
+          {{a.full_name}}
+        </option>
+      </select>
+    </div>
+    <div class="mb-1 form-control">
+      <label for="postImg" class="label"><span class="label-text">Image</span></label>
+      <input type="text" class="input input-bordered w-full max-w-xl" id="postImg" ngModel name ="image" placeholder="Entrez l'url  de l'imag"/>
+    </div>
+    <div class="mb-1 form-control">
+      <label for="postResume" class="label"><span class="label-text">Resume</span></label>
+      <textarea class="textarea textarea-bordered w-full max-w-xl" id="postResume" ngModel name ="resume" placeholder="resume du poste"></textarea>
+    </div>
+    <div class="mb-1 form-control">
+      <label for="postContent" class="label"><span class="label-text">Contenue</span></label>
+      <textarea  class="textarea textarea-bordered textarea-md w-full max-w-xl " id="postContent" ngModel name ="content" placeholder="contenu  du post"></textarea>
+    </div>
+    <div class=" flex items-start justify-start mb-2 p-2">
+      <button type="submit"  class="btn btn-primary">Creer</button>
+    </div>
+    <div *ngIf="errorMessage" class="text-red-500 text-xs">
+      Une Erreur c'est produite !!!!!!!
+      VEUILLEZ REMPLIR CORRECTEMENT LE FORMULAIRE
+      {{errors}}
+    </div>
+  </div>
+
+
+</form>
+
+

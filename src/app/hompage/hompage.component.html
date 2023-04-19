@@ -1,0 +1,19 @@
+  <p class="text-xl p-2 m-2 ">Derniers posts</p>
+  <div *ngFor="let p of posts" class="flex  p-2 m-1 justify-center">
+  <div  class="flex flex-col rounded-lg w-2/3  bg-base-100 md:max-w-screen-xl md:flex-row shadow-xl">
+    <img class="h-96 rounded-t-lg object-cover md:w-48 md:rounded-none md:rounded-l-lg md:h-auto w-full" src="{{p.image_url}}" alt="{{p.title}}"/>
+    <div class="card-body">
+      <h2 class="card-title">{{p.title}}</h2>
+      <p>
+        {{p.resume}} ...<br>
+      </p>
+      <div class=" card-actions flex justify-between">
+        <span   class="inline-block rounded badge-ghost p-2  text-xs font-medium uppercase leading-normal ">{{p.created_at |date :"medium"}}</span>
+        <span   class="inline-block rounded badge-ghost bg-pink-200 text-pink-400 p-2 text-xs font-medium uppercase leading-normal ">{{getAuthorName(p.author_id)}}</span>
+
+        <button class="btn btn-primary rounded  text-xs font-medium uppercase leading-normal" (click)="detailsPost(p.id)">Plus</button>
+      </div>
+    </div>
+  </div>
+  </div>
+

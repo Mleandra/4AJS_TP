@@ -1,0 +1,50 @@
+<div *ngIf="errorMessage" class="text-red-500 normal-case">
+  Une Erreur c'est produite !!!!!!!
+  VEUILLEZ REMPLIR CORRECTEMENT LE FORMULAIRE
+  {{errors}}
+</div>
+<form  class=" flex flex-col  items-center justify-center  p-4 sm:px-4 lg:px-6  w-full " (ngSubmit)="updatePost()" >
+  <h2 class="text-xl font-semibold text-gray-700">
+    Mise à  jour du  post "{{post.title}}"
+  </h2>
+
+  <div class="content-center grid grid-cols-1 gap-2 w-full">
+  <div class="mb-1 form-control">
+    <label for="postTitle" class="label"><span class="label-text">Title</span></label>
+    <input type="text" class="input input-bordered w-full max-w-xl" id="postTitle" [(ngModel)]="title" name ="pTitle" placeholder="Titre du post"/>
+  </div>
+  <div class="mb-1 form-control">
+    <label for="postAuthor" class="label"> <span class="label-text">Auteur</span></label>
+    <select  class=" select select-bordered w-full max-w-xl" id="postAuthor"   [(ngModel)]="author" name ="pAuthor">
+
+      <option *ngFor="let a of authors" [value]="a.id">
+        {{a.full_name}}
+      </option>
+    </select>
+  </div>
+  <div class="mb-1 form-control">
+    <label for="postImg" class="label"><span class="label-text">Image</span></label>
+    <input type="text" class="input input-bordered w-full max-w-xl" id="postImg" [(ngModel)]="image" name ="pImage" placeholder="Entrez l'url  de l'image"/>
+  </div>
+  <div class="mb-1 form-control">
+    <label for="postResume" class="label"><span class="label-text">Resume</span></label>
+    <textarea class="textarea textarea-bordered w-full max-w-xl" id="postResume" [(ngModel)]="resume" name ="pResume" placeholder="resume du poste"></textarea>
+  </div>
+  <div class="mb-1 form-control">
+    <label for="postContent" class="label"><span class="label-text">Contenue</span></label>
+    <textarea  class="textarea textarea-bordered textarea-md w-full max-w-xl " id="postContent" [(ngModel)]="content" name ="pContent" placeholder="contenu  du post"></textarea>
+  </div>
+    <div class="flex justify-start mb-2 p-2">
+      <button type="submit"  class=" text-xs btn btn-primary">Mettre à jour</button>
+    </div>
+    <div *ngIf="errorMessage" class="text-red-500 text-xs">
+      Une Erreur c'est produite !!!!!!!
+      VEUILLEZ REMPLIR CORRECTEMENT LE FORMULAIRE
+      {{errors}}
+    </div>
+  </div>
+
+
+
+</form>
+

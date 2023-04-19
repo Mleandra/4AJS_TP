@@ -1,0 +1,14 @@
+<div class="navbar bg-gray-800">
+  <div class="navbar start">
+    <a class="btn btn-ghost normal-case text-xl  text-primary" [routerLink]="['Homepage']"><span class="text-pink-500">Bloggy</span> </a>
+  </div>
+  <div  class="navbar-center hidden lg:flex">
+  </div>
+  <div class="navbar-end">
+    <a *ngIf="!authS.isLog()" [routerLink]="['/login']" class="btn  btn-primary">Admin</a>
+    <a *ngIf="authS.isLog()" [routerLink]="['/Admin']" class="btn  btn-primary">GoAdmin</a>
+  </div>
+</div>
+<div class="container p-5 m-6 container md:container overflow-hidden  flex flex-col">
+  <router-outlet></router-outlet>
+</div>

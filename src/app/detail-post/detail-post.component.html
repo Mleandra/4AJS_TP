@@ -1,0 +1,22 @@
+<div class=" flex justify-center bg-base-100 ">
+  <div class="block  w-2/3 md:max-w-screen-xl rounded-lg shadow-xl ">
+    <a href="{{post.image_url}}" data-te-ripple-init data-te-ripple-color="light">
+      <img class="rounded-t-lg h-96 w-full object-cover " src="{{post.image_url}}"    alt="{{post.title}}" />
+    </a>
+    <div class="p-6">
+      <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">
+       {{post.title}} par <div class="text-secondary"> {{author}}</div>
+      </h5>
+      <p class="mb-4 text-base text-neutral-600">
+        {{post.content}}
+      </p>
+      <div class="inline-block rounded badge-ghost px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal ">
+        {{post.created_at}}
+      </div>
+      <button (click)="backPage()"  class=" m-1 p-1 inline-block rounded badge-ghost  px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal ">
+      Retour
+    </button>
+    </div>
+  </div>
+
+</div>
