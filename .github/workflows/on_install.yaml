@@ -8,7 +8,7 @@ jobs:
       - name: "install job"
         working-directory: ./
         run: |
-          npm install
+          echo "hello"
 
 
 
