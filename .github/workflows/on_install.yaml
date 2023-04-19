@@ -1,0 +1,12 @@
+name: "install"
+on:
+  push
+jobs:
+  install_jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "install job"
+        run: |
+          npm install
+
+
