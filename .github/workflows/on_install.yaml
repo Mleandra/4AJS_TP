@@ -9,10 +9,8 @@ jobs:
 
         run: |
          pwd
-         ls
-
-
-        #working-directory:
+         ls -la
+        working-directory:
 
 
 
