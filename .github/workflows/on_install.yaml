@@ -6,7 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "install job"
+        working-directory: ./
         run: |
           npm install
+
+
+
 
 
