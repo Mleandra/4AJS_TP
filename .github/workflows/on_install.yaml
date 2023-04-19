@@ -12,7 +12,7 @@ jobs:
          ls
 
 
-        working-directory: ../
+        #working-directory:
 
 
 
