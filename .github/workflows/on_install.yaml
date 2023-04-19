@@ -8,9 +8,9 @@ jobs:
       - name: "install job"
 
         run: |
-         ls -la
+
          tree
-        working-directory: ../../
+        working-directory: /
 
 
 
