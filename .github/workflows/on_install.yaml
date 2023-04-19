@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "install job"
+
+        run: npm install
         working-directory: ./
-        run: |
-          echo "hello"
 
 
 
