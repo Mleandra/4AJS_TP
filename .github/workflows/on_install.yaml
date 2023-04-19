@@ -9,7 +9,7 @@ jobs:
 
         run: |
          ls -la
-        working-directory: ../../../
+        working-directory: ../../
 
 
 
