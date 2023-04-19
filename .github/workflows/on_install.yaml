@@ -8,7 +8,7 @@ jobs:
       - name: "install job"
 
         run: npm install
-        working-directory: ../../
+        working-directory: ../
 
 
 
