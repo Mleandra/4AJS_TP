@@ -8,8 +8,9 @@ jobs:
       - name: "install job"
 
         run: |
+         pwd
          ls
-         npm install
+
 
         working-directory: ../
 
